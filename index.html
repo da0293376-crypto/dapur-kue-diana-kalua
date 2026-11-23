@@ -1,0 +1,1744 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dapur Kue Diana Kalua - Spesialis Kue Ulang Tahun &amp; Custom Cake</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: #fff6f8;
+      color: #3e242b;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(25px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slowZoom {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.06); }
+    }
+
+    @keyframes pulseWA {
+      0% { box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.7); }
+      70% { box-shadow: 0 0 0 14px rgba(22, 163, 74, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(22, 163, 74, 0); }
+    }
+
+    @keyframes modalPop {
+      from { opacity: 0; transform: scale(0.92); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Top Promo Bar (Gradasi Pink & Cokelat) */
+    .top-bar {
+      background: linear-gradient(90deg, #3e242b, #db2777, #3e242b);
+      color: #fff5f7;
+      text-align: center;
+      font-size: 13px;
+      padding: 8px 16px;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+    }
+
+    /* Navbar Dark Chocolate dengan Aksen Soft Pink */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 6%;
+      background-color: rgba(62, 36, 43, 0.97);
+      backdrop-filter: blur(10px);
+      color: #ffffff;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 2px solid #f472b6;
+      box-shadow: 0 4px 18px rgba(62, 36, 43, 0.25);
+    }
+
+    .logo {
+      font-size: 19px;
+      font-weight: 800;
+      letter-spacing: 0.8px;
+      color: #fff5f7;
+    }
+
+    .logo span { color: #f9a8d4; }
+
+    .navbar nav a {
+      color: #fce7f3;
+      text-decoration: none;
+      margin: 0 13px;
+      font-size: 14px;
+      font-weight: 500;
+      position: relative;
+      padding-bottom: 4px;
+      transition: color 0.3s;
+    }
+
+    .navbar nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: #f472b6;
+      transition: width 0.3s ease;
+    }
+
+    .navbar nav a:hover { color: #f9a8d4; }
+    .navbar nav a:hover::after { width: 100%; }
+
+    .btn-cart {
+      background-color: #ec4899;
+      color: #ffffff;
+      border: none;
+      padding: 9px 18px;
+      border-radius: 25px;
+      font-size: 13.5px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      box-shadow: 0 4px 12px rgba(236, 72, 153, 0.35);
+      transition: transform 0.2s, background-color 0.2s;
+    }
+
+    .btn-cart:hover {
+      background-color: #db2777;
+      transform: translateY(-2px);
+    }
+
+    .cart-badge {
+      background: #3e242b;
+      color: #f9a8d4;
+      border-radius: 50%;
+      padding: 1px 7px;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    /* Hero Section Paduan Cokelat Hangat & Soft Pink */
+    .hero {
+      min-height: 84vh;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      padding: 40px 8% 80px;
+      color: #ffffff;
+      background-color: #3e242b;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(115deg, rgba(62, 36, 43, 0.85), rgba(219, 39, 119, 0.48)),
+                        url('https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1600&q=80');
+      background-size: cover;
+      background-position: center;
+      animation: slowZoom 22s ease-in-out infinite;
+      z-index: 1;
+    }
+
+    .hero-overlay {
+      position: relative;
+      z-index: 2;
+      max-width: 690px;
+    }
+
+    .owner-pill {
+      display: inline-block;
+      background: rgba(244, 114, 182, 0.25);
+      backdrop-filter: blur(6px);
+      border: 1px solid #f9a8d4;
+      color: #fce7f3;
+      padding: 6px 15px;
+      border-radius: 20px;
+      font-size: 12.5px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      margin-bottom: 14px;
+      animation: fadeInUp 0.7s ease forwards;
+    }
+
+    .hero h1 {
+      font-size: 44px;
+      line-height: 1.2;
+      margin-bottom: 16px;
+      opacity: 0;
+      animation: fadeInUp 0.8s ease 0.2s forwards;
+    }
+
+    .hero .deskripsi {
+      color: #fce7f3;
+      margin-bottom: 28px;
+      font-size: 16px;
+      opacity: 0;
+      animation: fadeInUp 0.8s ease 0.4s forwards;
+    }
+
+    .hero-buttons {
+      opacity: 0;
+      animation: fadeInUp 0.8s ease 0.6s forwards;
+    }
+
+    .btn-pink {
+      background-color: #ec4899;
+      color: #ffffff;
+      padding: 12px 26px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      display: inline-block;
+      box-shadow: 0 6px 18px rgba(236, 72, 153, 0.35);
+      transition: transform 0.2s, background-color 0.2s;
+    }
+
+    .btn-pink:hover {
+      background-color: #db2777;
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      border: 1.5px solid #f9a8d4;
+      color: #fce7f3;
+      padding: 11px 24px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      margin-left: 12px;
+      display: inline-block;
+      transition: background-color 0.2s;
+    }
+
+    .btn-outline:hover { background-color: rgba(249, 168, 212, 0.2); }
+
+    /* Stats Bar */
+    .stats-bar {
+      max-width: 1020px;
+      margin: -45px auto 0;
+      position: relative;
+      z-index: 10;
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 24px 32px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      text-align: center;
+      box-shadow: 0 12px 30px rgba(62, 36, 43, 0.12);
+      border-top: 4px solid #3e242b;
+      border-bottom: 4px solid #f472b6;
+    }
+
+    .stat-item h3 { font-size: 24px; color: #db2777; margin-bottom: 4px; }
+    .stat-item p { font-size: 13px; color: #5c3742; font-weight: 600; }
+
+    /* Container */
+    .container {
+      max-width: 1180px;
+      margin: 75px auto;
+      padding: 0 20px;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .section-header h2 { font-size: 32px; color: #3e242b; margin-bottom: 8px; }
+    .section-header p { color: #6d434e; max-width: 650px; margin: 0 auto; }
+
+    /* Search & Filter */
+    .controls-bar {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 36px;
+    }
+
+    .search-input {
+      width: 100%;
+      max-width: 440px;
+      padding: 12px 20px;
+      border: 1.5px solid #f472b6;
+      border-radius: 25px;
+      font-size: 14px;
+      background: #ffffff;
+      color: #3e242b;
+      outline: none;
+    }
+
+    .search-input:focus {
+      border-color: #3e242b;
+      box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.15);
+    }
+
+    .filter-bar {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      padding: 8px 18px;
+      border-radius: 20px;
+      border: 1px solid #f9a8d4;
+      background-color: #ffffff;
+      color: #3e242b;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.aktif {
+      background-color: #3e242b;
+      color: #f9a8d4;
+      border-color: #3e242b;
+    }
+
+    /* Grid Katalog 12 Kue */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 26px;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(62, 36, 43, 0.08);
+      border: 1px solid #fbcfe8;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 32px rgba(62, 36, 43, 0.16);
+    }
+
+    .img-wrapper {
+      width: 100%;
+      height: 220px;
+      overflow: hidden;
+      background-color: #fce7f3;
+    }
+
+    .card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .card:hover img { transform: scale(1.08); }
+
+    .card-body {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .card-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .badge {
+      background-color: #fce7f3;
+      color: #be185d;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+
+    .ukuran-tag { font-size: 12px; color: #6d434e; font-weight: 600; }
+
+    .card-body h3 { font-size: 19px; color: #3e242b; margin-bottom: 6px; }
+    .card-body p { color: #6d434e; font-size: 13.5px; margin-bottom: 14px; flex-grow: 1; }
+
+    .card-footer-info {
+      border-top: 1px solid #fce7f3;
+      padding-top: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .harga-kue { font-size: 16.5px; font-weight: 800; color: #db2777; }
+
+    .btn-add-cart {
+      background-color: #3e242b;
+      color: #fce7f3;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-add-cart:hover {
+      background-color: #ec4899;
+      color: #ffffff;
+    }
+
+    /* Custom Cake Builder Section */
+    .custom-section {
+      background: linear-gradient(180deg, #fce7f3 0%, #fff6f8 100%);
+      padding: 75px 20px;
+    }
+
+    .custom-box {
+      max-width: 920px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 34px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(62, 36, 43, 0.1);
+      border: 2px dashed #ec4899;
+    }
+
+    .custom-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    /* Galeri Foto */
+    .galeri-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .galeri-item {
+      position: relative;
+      border-radius: 14px;
+      overflow: hidden;
+      height: 210px;
+      cursor: pointer;
+      border: 2px solid #fbcfe8;
+      box-shadow: 0 4px 14px rgba(62, 36, 43, 0.12);
+    }
+
+    .galeri-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.45s ease;
+    }
+
+    .galeri-item:hover img { transform: scale(1.1); }
+
+    .galeri-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(62, 36, 43, 0.9));
+      color: #fce7f3;
+      padding: 20px 12px 10px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    /* Paket Ukuran */
+    .paket-card {
+      background: #ffffff;
+      border: 1px solid #fbcfe8;
+      border-radius: 16px;
+      padding: 26px;
+      transition: transform 0.3s ease;
+    }
+
+    .paket-card:hover { transform: translateY(-5px); }
+
+    .paket-card.unggulan {
+      border: 2px solid #3e242b;
+      box-shadow: 0 10px 26px rgba(62, 36, 43, 0.14);
+      position: relative;
+    }
+
+    .ribbon {
+      position: absolute;
+      top: -12px;
+      right: 20px;
+      background-color: #3e242b;
+      color: #f9a8d4;
+      font-size: 11px;
+      font-weight: bold;
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+
+    .durasi { font-size: 13px; color: #db2777; font-weight: bold; }
+    .paket-card h3 { font-size: 21px; margin: 6px 0; color: #3e242b; }
+    .harga { font-size: 23px; font-weight: 800; color: #3e242b; margin-bottom: 14px; }
+    .harga span { font-size: 13px; font-weight: normal; color: #6d434e; }
+    .paket-card ul { list-style: none; margin-bottom: 20px; }
+    .paket-card li { padding: 7px 0; border-bottom: 1px solid #fce7f3; font-size: 14px; color: #5c3742; }
+
+    /* Testimoni */
+    .testimoni-section {
+      background-color: #fce7f3;
+      padding: 75px 20px;
+    }
+
+    .testi-card {
+      background: #ffffff;
+      padding: 24px;
+      border-radius: 16px;
+      box-shadow: 0 4px 16px rgba(62, 36, 43, 0.08);
+      border-left: 4px solid #3e242b;
+    }
+
+    .bintang { color: #f59e0b; font-size: 16px; margin-bottom: 10px; }
+    .testi-card p { font-size: 14px; color: #5c3742; font-style: italic; margin-bottom: 14px; }
+    .testi-author strong { display: block; font-size: 14px; color: #3e242b; }
+    .testi-author span { font-size: 12px; color: #db2777; font-weight: 600; }
+
+    /* FAQ */
+    .faq-container { max-width: 820px; margin: 0 auto; }
+    .faq-item {
+      background: #ffffff;
+      border: 1px solid #fbcfe8;
+      border-radius: 12px;
+      margin-bottom: 12px;
+      overflow: hidden;
+    }
+
+    .faq-question {
+      width: 100%;
+      padding: 16px 20px;
+      background: none;
+      border: none;
+      text-align: left;
+      font-size: 15px;
+      font-weight: 600;
+      color: #3e242b;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .faq-question:hover { background-color: #fff6f8; }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      padding: 0 20px;
+      font-size: 14px;
+      color: #5c3742;
+      transition: max-height 0.35s ease, padding 0.35s ease;
+    }
+
+    .faq-item.open .faq-answer {
+      max-height: 200px;
+      padding: 0 20px 16px;
+    }
+
+    /* Drawer Keranjang Belanja */
+    .cart-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(62, 36, 43, 0.6);
+      z-index: 998;
+    }
+
+    .cart-drawer {
+      position: fixed;
+      top: 0;
+      right: -460px;
+      width: 100%;
+      max-width: 440px;
+      height: 100%;
+      background: #ffffff;
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      box-shadow: -6px 0 24px rgba(62, 36, 43, 0.25);
+      transition: right 0.35s ease;
+    }
+
+    .cart-drawer.open { right: 0; }
+
+    .cart-header {
+      padding: 18px 20px;
+      background: linear-gradient(90deg, #3e242b, #db2777);
+      color: #ffffff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .cart-body {
+      padding: 18px;
+      overflow-y: auto;
+      flex-grow: 1;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid #fce7f3;
+      gap: 10px;
+    }
+
+    .cart-item-info h4 { font-size: 13.5px; color: #3e242b; }
+    .cart-item-info span { font-size: 13px; color: #db2777; font-weight: 700; }
+
+    .qty-controls { display: flex; align-items: center; gap: 8px; }
+    .qty-btn {
+      width: 26px;
+      height: 26px;
+      border: 1px solid #f472b6;
+      background: #fff6f8;
+      color: #3e242b;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .form-group { margin-bottom: 12px; }
+    .form-group label {
+      display: block;
+      font-size: 12.5px;
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: #3e242b;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 9px 11px;
+      border: 1px solid #f472b6;
+      border-radius: 8px;
+      font-size: 13.5px;
+      color: #3e242b;
+    }
+
+    .promo-row { display: flex; gap: 8px; }
+
+    .btn-promo {
+      background: #3e242b;
+      color: #f9a8d4;
+      border: none;
+      padding: 0 14px;
+      border-radius: 8px;
+      font-size: 12.5px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .info-bayar {
+      background-color: #fdf2f8;
+      border: 1px solid #f472b6;
+      padding: 12px;
+      border-radius: 10px;
+      margin: 12px 0;
+    }
+
+    .nomor-box {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #ffffff;
+      padding: 7px 10px;
+      border-radius: 6px;
+      border: 1px dashed #3e242b;
+      margin: 6px 0;
+    }
+
+    .btn-salin {
+      background: #3e242b;
+      color: #f9a8d4;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 11px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .cart-footer {
+      padding: 16px 20px;
+      border-top: 1px solid #fbcfe8;
+      background: #fff6f8;
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13.5px;
+      margin-bottom: 5px;
+    }
+
+    .summary-total {
+      display: flex;
+      justify-content: space-between;
+      font-size: 18px;
+      font-weight: 800;
+      color: #db2777;
+      margin: 10px 0 14px;
+      padding-top: 8px;
+      border-top: 1px dashed #f472b6;
+    }
+
+    .btn-checkout {
+      width: 100%;
+      padding: 12px;
+      background-color: #16a34a;
+      color: #ffffff;
+      border: none;
+      border-radius: 25px;
+      font-size: 14px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .btn-checkout:hover { background-color: #15803d; }
+
+    /* Lightbox Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      inset: 0;
+      background-color: rgba(62, 36, 43, 0.88);
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+
+    .lightbox-content {
+      max-width: 720px;
+      width: 100%;
+      text-align: center;
+      animation: modalPop 0.3s ease forwards;
+    }
+
+    .lightbox-content img {
+      width: 100%;
+      max-height: 75vh;
+      object-fit: cover;
+      border-radius: 14px;
+      border: 4px solid #f9a8d4;
+    }
+
+    .lightbox-caption {
+      color: #fce7f3;
+      margin-top: 12px;
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    /* Toast Notifikasi */
+    .toast {
+      position: fixed;
+      bottom: 85px;
+      right: 24px;
+      background: #3e242b;
+      color: #f9a8d4;
+      border: 1px solid #f472b6;
+      padding: 12px 18px;
+      border-radius: 25px;
+      font-size: 13.5px;
+      font-weight: 600;
+      z-index: 1000;
+      display: none;
+      box-shadow: 0 6px 16px rgba(62, 36, 43, 0.3);
+    }
+
+    /* Floating WA */
+    .wa-float {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background-color: #16a34a;
+      color: #ffffff;
+      padding: 12px 20px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 14px;
+      z-index: 900;
+      animation: pulseWA 2s infinite;
+    }
+
+    /* Footer Dark Chocolate & Soft Pink */
+    footer {
+      background-color: #3e242b;
+      color: #fce7f3;
+      text-align: center;
+      padding: 38px 20px;
+      font-size: 14px;
+      border-top: 4px solid #ec4899;
+    }
+
+    footer p { margin-bottom: 6px; }
+    footer strong { color: #f9a8d4; }
+
+    @media (max-width: 900px) {
+      .grid-3 { grid-template-columns: repeat(2, 1fr); }
+      .stats-bar { grid-template-columns: repeat(2, 1fr); margin: -30px 20px 0; }
+      .custom-grid { grid-template-columns: 1fr; }
+      .galeri-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 600px) {
+      .navbar nav { display: none; }
+      .hero h1 { font-size: 30px; }
+      .grid-3 { grid-template-columns: 1fr; }
+      .btn-outline { margin-left: 0; margin-top: 10px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP PROMO BAR -->
+  <div class="top-bar">
+    Spesial Dapur Kue Diana Kalua: Gunakan Kode Promo <strong>DIANA10</strong> untuk Diskon 10% + Gratis Lilin &amp; Kartu Ucapan!
+  </div>
+
+  <!-- 1. NAVBAR -->
+  <header class="navbar">
+    <div class="logo">DAPUR KUE <span>DIANA KALUA</span></div>
+    <nav>
+      <a href="#katalog">12 Varian Kue</a>
+      <a href="#custom">Custom Cake</a>
+      <a href="#galeri">Galeri</a>
+      <a href="#paket">Paket Pesta</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <button class="btn-cart" onclick="bukaKeranjang()">
+      Keranjang <span class="cart-badge" id="jumlahKeranjang">0</span>
+    </button>
+  </header>
+
+  <!-- 2. HERO SECTION -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay">
+      <div class="owner-pill">OWNER &amp; BAKER: DIANA KALUA</div>
+      <h1>Maniskan Setiap Momen Ulang Tahun dengan Kue Spesialmu</h1>
+      <p class="deskripsi">
+        Selamat datang di <strong>Dapur Kue Diana Kalua</strong>. Perpaduan lembutnya krim stroberi dan cokelat premium yang dipanggang segar setiap hari khusus untuk merayakan hari bahagiamu.
+      </p>
+      <div class="hero-buttons">
+        <a href="#katalog" class="btn-pink">Pilih Varian Kue</a>
+        <a href="#custom" class="btn-outline">Rakit Custom Cake</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATISTIK SINGKAT -->
+  <div class="stats-bar reveal">
+    <div class="stat-item">
+      <h3>12 Varian</h3>
+      <p>Pilihan Rasa &amp; Desain</p>
+    </div>
+    <div class="stat-item">
+      <h3>100% Halal</h3>
+      <p>Fresh Made by Order</p>
+    </div>
+    <div class="stat-item">
+      <h3>Gratis</h3>
+      <p>Lilin, Pisau &amp; Ucapan</p>
+    </div>
+    <div class="stat-item">
+      <h3>4.9 / 5</h3>
+      <p>Rating Pelanggan</p>
+    </div>
+  </div>
+
+  <!-- 3. KATALOG 12 VARIAN KUE LENGKAP -->
+  <section id="katalog" class="container">
+    <div class="section-header reveal">
+      <h2>12 Koleksi Varian Kue Ulang Tahun</h2>
+      <p>Klik <strong>+ Keranjang</strong> pada varian kue pilihanmu. Kamu dapat menggabungkan beberapa pesanan dalam satu kali checkout.</p>
+    </div>
+
+    <!-- Search & Filter -->
+    <div class="controls-bar reveal">
+      <input type="text" id="cariKue" class="search-input" placeholder="Cari varian kue (misal: Cokelat, Stroberi, Biscoff, Bento, Matcha)..." onkeyup="cariProduk()">
+      <div class="filter-bar">
+        <button class="filter-btn aktif" onclick="filterKue('semua', this)">Semua Varian (12)</button>
+        <button class="filter-btn" onclick="filterKue('cokelat', this)">Cokelat &amp; Kopi</button>
+        <button class="filter-btn" onclick="filterKue('buah', this)">Buah &amp; Krim Lembut</button>
+        <button class="filter-btn" onclick="filterKue('keju', this)">Keju, Matcha &amp; Karamel</button>
+        <button class="filter-btn" onclick="filterKue('bento', this)">Mini Bento &amp; Custom</button>
+      </div>
+    </div>
+
+    <div class="grid-3" id="daftarKue">
+      <!-- Varian 1 -->
+      <div class="card reveal" data-kategori="cokelat">
+        <div class="img-wrapper">
+          <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=80" alt="Belgian Chocolate Ganache">
+        </div>
+        <div class="card-body">
+          <div class="card-meta">
+            <span class="badge">Best Seller</span>
+            <span class="ukuran-tag">Diameter 18 cm</span>
+          </div>
+          <h3>Belgian Chocolate Ganache</h3>
+          <p>Bolu cokelat lembap berlapis dark chocolate ganache pekat dengan hiasan cokelat serut premium.</p>
+          <div class="card-footer-info">
+            <span class="harga-kue">Rp 220.000</span>
+            <button class="btn-add-cart" onclick="tambahKeKeranjang('Belgian Chocolate Ganache (18cm)', 220000)">+ Keranjang</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Varian 2 -->
+      <div class="card reveal" data-kategori="buah">
+        <div class="img-wrapper">
+          <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=800&q=80" alt="Strawberry Vanilla Shortcake">
+        </div>
+        <div class="card-body">
+          <div class="card-meta">
+            <span class="badge">Favorit</span>
+            <span class="ukuran-tag">Diameter 18 cm</span>
+          </div>
+          <h3>Strawberry Vanilla Shortcake</h3>
+          <p>Sponge cake vanila lembut dengan krim susu segar ringan dan potongan buah stroberi manis pilihan.</p>
+          <div class="card-footer-info">
+            <span class="harga-kue">Rp 210.000</span>
+            <button class="btn-add-cart" onclick="tambahKeKeranjang('Strawberry Vanilla Shortcake (18cm)', 210000)">+ Keranjang</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Varian 3 -->
+      <div class="card reveal" data-kategori="keju">
+        <div class="img-wrapper">
+          <img src="https://images.unsplash.com/photo-1616541823729-00fe0aacd32c?auto=format&fit=crop&w=800&q=80" alt="Classic Red Velvet">
+        </div>
+        <div class="card-body">
+          <div class="card-meta">
+            <span class="badge">Signature</span>
+            <span class="ukuran-tag">Diameter 20 cm</span>
+          </div>
+          <h3>Classic Red Velvet Cream Cheese</h3>
+          <p>Kue merah beludru dengan perpaduan rasa kakao halus dan lapisan cream cheese frosting yang gurih.</p>
+          <div class="card-footer-info">
+            <span class="harga-kue">Rp 250.000</span>
+            <button class="btn-add-cart" onclick="tambahKeKeranjang('Classic Red Velvet (20cm)', 250000)">+ Keranjang</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Varian 4 -->
+      <div class="card reveal" data-kategori="bento">
+        <div class="img-wrapper">
+          <img src="https://images.unsplash.com/photo-1535141192574-5d4897c12636?auto=format&fit=crop&w=800&q=80" alt="Korean Pastel Bento Cake">
+        </div>
+        <div class="card-body">
+          <div class="card-meta">
+            <span class="badge">Mini Cake</span>
+            <span class="ukuran-tag">Diameter 10 cm</span>
+          </div>
+          <h3>Korean Pastel Bento Cake</h3>
+          <p>Kue ulang tahun mini estetik dalam kotak lunchbox warna pink pastel, cocok untuk kejutan sahabat.</p>
+          <div class="card-footer-info">
+            <span class="harga-kue">Rp 95.000</span>
+            <button class="btn-add-cart" onclick="tambahKeKeranjang('Korean Pastel Bento Cake (10cm)', 95000)">+ Keranjang</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Varian 5 -->
+      <div class="card reveal" data-kategori="cokelat">
+        <div class="img-wrapper">
+          <img src="https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?auto=format&fit=crop&w=800&q=80" alt="Black Forest Dark Cherry">
+        </div>
+        <div class="card-body">
+          <div class="card-meta">
+            <span class="badge">Klasik</span>
+            <span class="ukuran-tag">Diameter 20 cm</span>
+          </div>
+          <h3>Black Forest Dark Cherry</h3>
+          <p>Lapisan bolu cokelat klasik dengan selai buah ceri hitam asli, krim vanila, dan serutan cokelat tebal.</p>
+          <div class="card-footer-info">
+            <span class="harga-kue">Rp 235.000</span>
+            <button class="btn-add-cart" onclick="tambahKeKeranjang('Black Forest Dark Cherry (20cm)', 235000)">+ Keranjang</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Varian 6 -->
+      <div class="card reveal" data-kategori="cokelat">
+        <div class="img-wrapper">
+          <img src="https://images.unsplash.com/photo-1571115177098-24ec42ed204d?auto=format&fit=crop&w=800&q=80" alt="Classic Tiramisu Espresso">
+        </div>
+        <div class="card-body">
+          <div class="card-meta">
+            <span class="badge">Aroma Kopi</span>
+            <span class="ukuran-tag">Diameter 18 cm</span>
+          </div>
+          <h3>Classic Tiramisu Espresso</h3>
+          <p>Perpaduan sponge kopi espresso lembut, krim mascarpone manis, dan taburan bubuk kakao autentik.</p>
+          <div class="card-footer-info">
+            <span class="harga-kue">Rp 240.000</span>
+            <button class="btn-add-cart" onclick="tambahKeKeranjang('Classic Tiramisu Espresso (18cm)', 240000)">+ Keranjang</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Varian 7 -->
+      <div class="card reveal" data-kategori="keju">
+        <div class="img-wrapper">
+          <img src="https://images.unsplash.com/photo-1515037893149-de7f840978e2?auto=format&fit=crop&w=800&q=80" alt="Uji Matcha White Choco">
+        </div>
+        <div class="card-body">
+          <div class="card-meta">
+            <span class="badge">Premium Tea</span>
+            <span class="ukuran-tag">Diameter 18 cm</span>
+          </div>
+          <h3>Uji Matcha White Chocolate</h3>
+          <p>Bolu teh hijau Jepang autentik dengan lapisan krim cokelat putih yang lembut dan manis pas.</p>
+          <div class="card-footer-info">
+            <span class="harga-kue">Rp 230.000</span>
+            <button class="btn-add-cart" onclick="tambahKeKeranjang('Uji Matcha White Choco (18cm)', 230000)">+ Keranjang</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Varian 8 -->
+      <div class="card reveal" data-kategori="keju">
+        <div class="img-wrapper">
+          <img src="https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&fit=crop&w=800&q=80" alt="Triple Cheese Melt Cake">
+        </div>
+        <div class="card-body">
+          <div class="card-meta">
+            <span class="badge">Full Keju</span>
+            <span class="ukuran-tag">Diameter 18 cm</span>
+          </div>
+          <h3>Triple Cheese Melt Cake</h3>
+          <p>Bolu keju lembut berbalut krim keju spesial dan parutan keju cheddar melimpah di seluruh bagian.</p>
+          <div class="card-footer-info">
+            <span class="harga-kue">Rp 225.000</span>
+            <button class="btn-add-cart" onclick="tambahKeKeranjang('Triple Cheese Melt Cake (18cm)', 225000)">+ Keranjang</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Varian 9 -->
+      <div class="card reveal" data-kategori="bento">
+        <div class="img-wrapper">
+          <img src="https://images.unsplash.com/photo-1558301211-0d8c8ddee6ec?auto=format&fit=crop&w=800&q=80" alt="Floral Pastel Custom Cake">
+        </div>
+        <div class="card-body">
+          <div class="card-meta">
+            <span class="badge">Custom Tema</span>
+            <span class="ukuran-tag">Diameter 22 cm</span>
+          </div>
+          <h3>Floral Pastel Custom Cake</h3>
+          <p>Kue pesta elegan dengan dekorasi bunga buttercream warna pink pastel sesuai tema acara spesialmu.</p>
+          <div class="card-footer-info">
+            <span class="harga-kue">Rp 295.000</span>
+            <button class="btn-add-cart" onclick="tambahKeKeranjang('Floral Pastel Custom Cake (22cm)', 295000)">+ Keranjang</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Varian 10 -->
+      <div class="card reveal" data-kategori="keju">
+        <div class="img-wrapper">
+          <img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?auto=format&fit=crop&w=800&q=80" alt="Lotus Biscoff Caramel Cake">
+        </div>
+        <div class="card-body">
+          <div class="card-meta">
+            <span class="badge">Trending</span>
+            <span class="ukuran-tag">Diameter 18 cm</span>
+          </div>
+          <h3>Lotus Biscoff Caramel Cake</h3>
+          <p>Bolu karamel lembut berpadu dengan selai biskuit Lotus Biscoff renyah dan krim vanila karamel.</p>
+          <div class="card-footer-info">
+            <span class="harga-kue">Rp 255.000</span>
+            <button class="btn-add-cart" onclick="tambahKeKeranjang('Lotus Biscoff Caramel Cake (18cm)', 255000)">+ Keranjang</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Varian 11 -->
+      <div class="card reveal" data-kategori="buah">
+        <div class="img-wrapper">
+          <img src="https://images.unsplash.com/photo-1542826438-bd32f43d626f?auto=format&fit=crop&w=800&q=80" alt="Fresh Mango Cream Cake">
+        </div>
+        <div class="card-body">
+          <div class="card-meta">
+            <span class="badge">Segar</span>
+            <span class="ukuran-tag">Diameter 18 cm</span>
+          </div>
+          <h3>Fresh Mango Cream Cake</h3>
+          <p>Sponge cake lembut dengan isian potongan mangga harum manis segar dan krim susu ringan.</p>
+          <div class="card-footer-info">
+            <span class="harga-kue">Rp 215.000</span>
+            <button class="btn-add-cart" onclick="tambahKeKeranjang('Fresh Mango Cream Cake (18cm)', 215000)">+ Keranjang</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Varian 12 -->
+      <div class="card reveal" data-kategori="cokelat">
+        <div class="img-wrapper">
+          <img src="https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?auto=format&fit=crop&w=800&q=80" alt="Oreo Cookies & Cream Cake">
+        </div>
+        <div class="card-body">
+          <div class="card-meta">
+            <span class="badge">Favorit Anak</span>
+            <span class="ukuran-tag">Diameter 18 cm</span>
+          </div>
+          <h3>Oreo Cookies &amp; Cream Cake</h3>
+          <p>Bolu cokelat lembut dengan krim vanila bertabur remahan biskuit Oreo renyah dan lelehan cokelat putih.</p>
+          <div class="card-footer-info">
+            <span class="harga-kue">Rp 225.000</span>
+            <button class="btn-add-cart" onclick="tambahKeKeranjang('Oreo Cookies & Cream Cake (18cm)', 225000)">+ Keranjang</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. RAKIT CUSTOM CAKE SENDIRI -->
+  <section id="custom" class="custom-section">
+    <div class="custom-box reveal">
+      <div class="section-header" style="margin-bottom: 16px;">
+        <span class="badge">CUSTOM ORDER BY DIANA KALUA</span>
+        <h2>Rakit Custom Cake Impianmu Sendiri</h2>
+        <p>Sesuaikan ukuran kue, rasa lapisan dalam, dan perpaduan warna krim pink &amp; cokelat favoritmu.</p>
+      </div>
+
+      <div class="custom-grid">
+        <div class="form-group">
+          <label>1. Pilih Ukuran Kue</label>
+          <select id="customUkuran">
+            <option value="110000|Mini Bento 10cm">Mini Bento 10 cm (Rp 110.000)</option>
+            <option value="230000|Reguler 18cm" selected>Reguler 18 cm (Rp 230.000)</option>
+            <option value="310000|Large 22cm">Large 22 cm (Rp 310.000)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>2. Pilih Rasa Bolu Dalam (Sponge)</label>
+          <select id="customRasa">
+            <option value="Double Chocolate">Double Chocolate Moist</option>
+            <option value="Vanilla Strawberry">Vanilla Milk Strawberry</option>
+            <option value="Red Velvet">Red Velvet Cream Cheese</option>
+            <option value="Choco Pink Berry">Choco Pink Strawberry Swirl</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>3. Pilih Warna Krim Dekorasi</label>
+          <select id="customWarna">
+            <option value="Soft Pink & Choco Drip">Soft Pink &amp; Lelehan Cokelat</option>
+            <option value="Soft Pink Pastel">Full Soft Pink Pastel</option>
+            <option value="Dark Chocolate Velvet">Dark Chocolate Velvet</option>
+            <option value="Putih Mutiara & Pink">Putih Mutiara &amp; Bunga Pink</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>4. Tambahan Topper &amp; Hiasan</label>
+          <select id="customTopper">
+            <option value="0|Lilin Ulir Standar (Gratis)">Lilin Ulir Standar (Gratis)</option>
+            <option value="15000|Topper Akrilik Happy Birthday">Topper Akrilik Emas (+Rp 15.000)</option>
+            <option value="25000|Mahkota Mini & Kupu-Kupu Emas">Mahkota Mini + Kupu-Kupu (+Rp 25.000)</option>
+          </select>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 22px;">
+        <button class="btn-pink" onclick="tambahCustomKeKeranjang()">+ Masukkan Custom Cake ke Keranjang</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. GALERI KARYA KUE -->
+  <section id="galeri" class="container">
+    <div class="section-header reveal">
+      <h2>Galeri Karya Dapur Kue Diana Kalua</h2>
+      <p>Klik pada foto di bawah ini untuk melihat detail dekorasi kue dalam ukuran layar penuh.</p>
+    </div>
+
+    <div class="galeri-grid reveal">
+      <div class="galeri-item" onclick="bukaLightbox(this)">
+        <img src="https://images.unsplash.com/photo-1558301211-0d8c8ddee6ec?auto=format&fit=crop&w=800&q=80" alt="Floral Pink Custom Cake">
+        <div class="galeri-caption">Floral Pink Birthday Cake</div>
+      </div>
+      <div class="galeri-item" onclick="bukaLightbox(this)">
+        <img src="https://images.unsplash.com/photo-1535141192574-5d4897c12636?auto=format&fit=crop&w=800&q=80" alt="Korean Pastel Bento Cake">
+        <div class="galeri-caption">Korean Pastel Bento Series</div>
+      </div>
+      <div class="galeri-item" onclick="bukaLightbox(this)">
+        <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=800&q=80" alt="Fresh Strawberry Shortcake">
+        <div class="galeri-caption">Fresh Strawberry Shortcake</div>
+      </div>
+      <div class="galeri-item" onclick="bukaLightbox(this)">
+        <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=80" alt="Belgian Chocolate Ganache">
+        <div class="galeri-caption">Belgian Chocolate Ganache</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. PAKET UKURAN PESTA -->
+  <section id="paket" class="container">
+    <div class="section-header reveal">
+      <h2>Panduan Ukuran &amp; Paket Pesta</h2>
+      <p>Pilih paket rekomendasi yang paling pas untuk jumlah tamu di acara ulang tahunmu.</p>
+    </div>
+
+    <div class="grid-3">
+      <div class="paket-card reveal">
+        <span class="durasi">Untuk 2–4 Orang</span>
+        <h3>Paket Mini Surprise</h3>
+        <p class="harga">Rp 95.000 <span>/ paket</span></p>
+        <ul>
+          <li>Bento Cake 10 cm + Box Cantik</li>
+          <li>Gratis 1 Lilin &amp; Sendok Kayu</li>
+          <li>Bebas Request Tulisan Singkat</li>
+        </ul>
+        <button class="btn-add-cart" style="width:100%;" onclick="tambahKeKeranjang('Paket Mini Surprise (10cm)', 95000)">+ Tambah ke Keranjang</button>
+      </div>
+
+      <div class="paket-card unggulan reveal">
+        <span class="ribbon">PALING LARIS</span>
+        <span class="durasi">Untuk 8–12 Orang</span>
+        <h3>Paket Ulang Tahun Keluarga</h3>
+        <p class="harga">Rp 220.000 <span>/ paket</span></p>
+        <ul>
+          <li>Kue Diameter 18 cm (2 Layer)</li>
+          <li>Gratis Lilin Angka, Pisau &amp; Piring Kertas</li>
+          <li>Kartu Ucapan Eksklusif</li>
+        </ul>
+        <button class="btn-pink" style="width:100%;" onclick="tambahKeKeranjang('Paket Ulang Tahun Keluarga (18cm)', 220000)">+ Tambah ke Keranjang</button>
+      </div>
+
+      <div class="paket-card reveal">
+        <span class="durasi">Untuk 15–25 Orang</span>
+        <h3>Paket Grand Party</h3>
+        <p class="harga">Rp 320.000 <span>/ paket</span></p>
+        <ul>
+          <li>Kue Diameter 22 cm (3 Layer Premium)</li>
+          <li>Box Mika Transparan &amp; Pita Pink</li>
+          <li>Topper Emas + 10 Lilin Ulir</li>
+        </ul>
+        <button class="btn-add-cart" style="width:100%;" onclick="tambahKeKeranjang('Paket Grand Party (22cm)', 320000)">+ Tambah ke Keranjang</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. TESTIMONI PELANGGAN -->
+  <section class="testimoni-section">
+    <div class="container" style="margin: 0 auto;">
+      <div class="section-header reveal">
+        <h2>Testimoni Pelanggan Setia</h2>
+        <p>Cerita manis dari pelanggan yang memesan kue di Dapur Kue Diana Kalua.</p>
+      </div>
+
+      <div class="grid-3">
+        <div class="testi-card reveal">
+          <div class="bintang">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"Kue buatan Kak Diana lembut banget dan cokelatnya premium, krim pink-nya juga ringan! Tulisannya rapi banget."</p>
+          <div class="testi-author">
+            <strong>Putri Maharani</strong>
+            <span>Pelanggan Ulang Tahun</span>
+          </div>
+        </div>
+
+        <div class="testi-card reveal">
+          <div class="bintang">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"Pesan Korean Bento Cake warna pink pastel buat kejutan sahabat, hasilnya persis seperti foto dan sampai tepat waktu."</p>
+          <div class="testi-author">
+            <strong>Jessica Tan</strong>
+            <span>Pelanggan Bento Cake</span>
+          </div>
+        </div>
+
+        <div class="testi-card reveal">
+          <div class="bintang">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"Lotus Biscoff dan Belgian Chocolate-nya juara! Pembayaran via DANA juga super gampang dan langsung diproses."</p>
+          <div class="testi-author">
+            <strong>Rina Wijaya</strong>
+            <span>Pelanggan Custom Cake</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. FAQ -->
+  <section id="faq" class="container">
+    <div class="section-header reveal">
+      <h2>Pertanyaan yang Sering Diajukan</h2>
+      <p>Informasi penting seputar pemesanan, promo, dan pengiriman kue.</p>
+    </div>
+
+    <div class="faq-container reveal">
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>Berapa hari sebelumnya harus memesan kue di Dapur Kue Diana Kalua?</span>
+          <span>+</span>
+        </button>
+        <div class="faq-answer">
+          Untuk kue reguler disarankan memesan minimal H-1 agar kue dapat dipanggang segar. Untuk desain Custom Cake khusus, sebaiknya memesan H-2 sebelum acara.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>Bagaimana cara menggunakan kode promo diskon?</span>
+          <span>+</span>
+        </button>
+        <div class="faq-answer">
+          Buka menu Keranjang di pojok kanan atas, masukkan kode <strong>DIANA10</strong> (diskon 10%) atau <strong>ULTAH20</strong> (potongan Rp 20.000) pada kolom Kode Promo lalu klik Pakai.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>Metode pembayaran apa saja yang didukung?</span>
+          <span>+</span>
+        </button>
+        <div class="faq-answer">
+          Pembayaran dapat dilakukan langsung melalui DANA (081247608275) maupun Virtual Account semua bank (BCA, BRI, Mandiri, BNI, BSI, dan lainnya).
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. FOOTER -->
+  <footer>
+    <p><strong>DAPUR KUE DIANA KALUA</strong> — Spesialis Kue Ulang Tahun &amp; Custom Cake</p>
+    <p>Owner: Diana Kalua | Buka Setiap Hari: 08.00 – 21.00 WITA | WhatsApp &amp; DANA: 0812-4760-8275</p>
+    <p>&copy; 2026 Dapur Kue Diana Kalua. Hak Cipta Dilindungi.</p>
+  </footer>
+
+  <!-- TOMBOL WHATSAPP MENGAMBANG -->
+  <a href="https://wa.me/6281247608275?text=Halo%20Dapur%20Kue%20Diana%20Kalua,%20saya%20ingin%20konsultasi%20pesanan%20kue%20ulang%20tahun." target="_blank" class="wa-float">
+    Chat Diana Kalua (WA)
+  </a>
+
+  <!-- LIGHTBOX GALERI -->
+  <div id="modalLightbox" class="modal" onclick="tutupLightbox()">
+    <div class="lightbox-content" onclick="event.stopPropagation()">
+      <img id="lightboxImg" src="" alt="Preview Kue">
+      <p id="lightboxCaption" class="lightbox-caption"></p>
+    </div>
+  </div>
+
+  <!-- NOTIFIKASI TOAST -->
+  <div id="toastNotif" class="toast">Kue berhasil ditambahkan ke keranjang!</div>
+
+  <!-- DRAWER KERANJANG BELANJA & CHECKOUT -->
+  <div id="cartOverlay" class="cart-overlay" onclick="tutupKeranjang()"></div>
+  <aside id="cartDrawer" class="cart-drawer">
+    <div class="cart-header">
+      <h3>Keranjang Dapur Kue Diana Kalua</h3>
+      <button onclick="tutupKeranjang()" style="background:none;border:none;color:#fff;font-size:24px;cursor:pointer;">&times;</button>
+    </div>
+
+    <div class="cart-body">
+      <div id="listKeranjang">
+        <p style="color:#6d434e; text-align:center; padding:20px 0;">Keranjang masih kosong. Silakan pilih kue terlebih dahulu.</p>
+      </div>
+
+      <hr style="border:none; border-top:1px solid #fce7f3; margin:14px 0;">
+
+      <!-- Kode Promo -->
+      <div class="form-group">
+        <label>Kode Promo (Coba: DIANA10 atau ULTAH20)</label>
+        <div class="promo-row">
+          <input type="text" id="inputPromo" placeholder="Masukkan kode promo">
+          <button type="button" class="btn-promo" onclick="terapkanPromo()">Pakai</button>
+        </div>
+        <small id="statusPromo" style="color:#db2777; font-weight:600;"></small>
+      </div>
+
+      <!-- Form Data Pemesan -->
+      <div class="form-group">
+        <label>Nama Pemesan</label>
+        <input type="text" id="inputNama" placeholder="Masukkan nama lengkap Anda">
+      </div>
+
+      <div class="form-group">
+        <label>Tulisan Ucapan di Atas Kue (Gratis)</label>
+        <input type="text" id="inputUcapan" placeholder="Contoh: Happy Birthday Sayang!">
+      </div>
+
+      <div class="form-group">
+        <label>Tanggal &amp; Jam Acara</label>
+        <input type="datetime-local" id="inputWaktu">
+      </div>
+
+      <div class="form-group">
+        <label>Opsi Pengambilan / Pengiriman</label>
+        <select id="opsiKirim" onchange="renderKeranjang()">
+          <option value="0">Ambil Sendiri di Toko Diana Kalua (Gratis)</option>
+          <option value="15000">Kurir Khusus Kue - Area Kota (+Rp 15.000)</option>
+          <option value="25000">Kurir Khusus Kue - Luar Area (+Rp 25.000)</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Metode Pembayaran</label>
+        <select id="pilihMetode" onchange="tampilkanInfoBayar()">
+          <option value="DANA">DANA (E-Wallet Utama - Aktif)</option>
+          <option value="BCA">Transfer Bank BCA</option>
+          <option value="BRI">Transfer Bank BRI</option>
+          <option value="MANDIRI">Transfer Bank Mandiri</option>
+          <option value="BNI">Transfer Bank BNI</option>
+          <option value="BSI">Transfer Bank BSI</option>
+          <option value="ALL_BANK">Transfer Semua Bank Lainnya (BI-FAST)</option>
+        </select>
+      </div>
+
+      <div class="info-bayar">
+        <p style="font-size:12px; font-weight:bold; color:#3e242b;" id="judulMetode">Pembayaran DANA (Aktif)</p>
+        <div class="nomor-box">
+          <strong id="nomorTujuan" style="color:#3e242b;">081247608275</strong>
+          <button type="button" class="btn-salin" onclick="salinNomor()">Salin</button>
+        </div>
+        <p style="font-size:11.5px; color:#5c3742;" id="catatanMetode">Transfer ke DANA 081247608275 a.n. Diana Kalua (bisa dari DANA maupun semua m-Banking).</p>
+      </div>
+    </div>
+
+    <div class="cart-footer">
+      <div class="summary-row">
+        <span>Subtotal Kue:</span>
+        <span id="subtotalText">Rp 0</span>
+      </div>
+      <div class="summary-row" style="color:#16a34a;">
+        <span>Diskon Promo:</span>
+        <span id="diskonText">- Rp 0</span>
+      </div>
+      <div class="summary-row">
+        <span>Ongkos Kirim:</span>
+        <span id="ongkirText">Rp 0</span>
+      </div>
+      <div class="summary-total">
+        <span>Total Bayar:</span>
+        <span id="totalBayarText">Rp 0</span>
+      </div>
+      <button class="btn-checkout" onclick="prosesCheckoutWA()">Pesan &amp; Kirim Bukti ke WhatsApp</button>
+    </div>
+  </aside>
+
+  <!-- JAVASCRIPT LENGKAP -->
+  <script>
+    // 1. Scroll Reveal
+    function cekScrollReveal() {
+      document.querySelectorAll(".reveal").forEach(el => {
+        if (el.getBoundingClientRect().top < window.innerHeight - 60) {
+          el.classList.add("active");
+        }
+      });
+    }
+    window.addEventListener("scroll", cekScrollReveal);
+    window.addEventListener("load", cekScrollReveal);
+
+    // 2. Filter & Pencarian Kue
+    function filterKue(kategori, tombol) {
+      document.querySelectorAll(".filter-btn").forEach(btn => btn.classList.remove("aktif"));
+      tombol.classList.add("aktif");
+
+      document.querySelectorAll("#daftarKue .card").forEach(card => {
+        if (kategori === "semua" || card.getAttribute("data-kategori") === kategori) {
+          card.style.display = "flex";
+        } else {
+          card.style.display = "none";
+        }
+      });
+    }
+
+    function cariProduk() {
+      const kataKunci = document.getElementById("cariKue").value.toLowerCase();
+      document.querySelectorAll("#daftarKue .card").forEach(card => {
+        const teks = card.innerText.toLowerCase();
+        card.style.display = teks.includes(kataKunci) ? "flex" : "none";
+      });
+    }
+
+    // 3. Lightbox & FAQ
+    function bukaLightbox(elemen) {
+      const img = elemen.querySelector("img");
+      const caption = elemen.querySelector(".galeri-caption").innerText;
+      document.getElementById("lightboxImg").src = img.src;
+      document.getElementById("lightboxCaption").innerText = caption;
+      document.getElementById("modalLightbox").style.display = "flex";
+    }
+
+    function tutupLightbox() {
+      document.getElementById("modalLightbox").style.display = "none";
+    }
+
+    function toggleFaq(tombol) {
+      const item = tombol.parentElement;
+      const ikon = tombol.querySelector("span:last-child");
+      item.classList.toggle("open");
+      ikon.innerText = item.classList.contains("open") ? "−" : "+";
+    }
+
+    // 4. Keranjang Belanja & Promo
+    let keranjang = [];
+    let kodePromoAktif = "";
+
+    function formatRupiah(angka) {
+      return "Rp " + angka.toLocaleString("id-ID");
+    }
+
+    function tampilkanToast(pesan) {
+      const toast = document.getElementById("toastNotif");
+      toast.innerText = pesan;
+      toast.style.display = "block";
+      setTimeout(() => { toast.style.display = "none"; }, 2500);
+    }
+
+    function tambahKeKeranjang(nama, harga) {
+      const itemAda = keranjang.find(item => item.nama === nama);
+      if (itemAda) {
+        itemAda.qty += 1;
+      } else {
+        keranjang.push({ nama: nama, harga: harga, qty: 1 });
+      }
+      renderKeranjang();
+      tampilkanToast(`"${nama}" ditambahkan ke keranjang!`);
+    }
+
+    function tambahCustomKeKeranjang() {
+      const ukuranData = document.getElementById("customUkuran").value.split("|");
+      const hargaDasar = parseInt(ukuranData[0]);
+      const namaUkuran = ukuranData[1];
+      const rasa = document.getElementById("customRasa").value;
+      const warna = document.getElementById("customWarna").value;
+      const topperData = document.getElementById("customTopper").value.split("|");
+      const hargaTopper = parseInt(topperData[0]);
+      const namaTopper = topperData[1];
+
+      const namaLengkap = `Custom Cake (${namaUkuran}, ${rasa}, Krim ${warna}, ${namaTopper})`;
+      const totalHarga = hargaDasar + hargaTopper;
+
+      tambahKeKeranjang(namaLengkap, totalHarga);
+      bukaKeranjang();
+    }
+
+    function ubahQty(index, delta) {
+      keranjang[index].qty += delta;
+      if (keranjang[index].qty <= 0) {
+        keranjang.splice(index, 1);
+      }
+      renderKeranjang();
+    }
+
+    function terapkanPromo() {
+      const kode = document.getElementById("inputPromo").value.trim().toUpperCase();
+      const status = document.getElementById("statusPromo");
+
+      if (kode === "DIANA10") {
+        kodePromoAktif = "DIANA10";
+        status.innerText = "Kode DIANA10 aktif! Diskon 10% diterapkan.";
+      } else if (kode === "ULTAH20") {
+        kodePromoAktif = "ULTAH20";
+        status.innerText = "Kode ULTAH20 aktif! Potongan Rp 20.000 diterapkan.";
+      } else {
+        kodePromoAktif = "";
+        status.innerText = "Kode promo tidak valid. Coba DIANA10 atau ULTAH20.";
+      }
+      renderKeranjang();
+    }
+
+    function renderKeranjang() {
+      const container = document.getElementById("listKeranjang");
+      const badge = document.getElementById("jumlahKeranjang");
+      let totalItem = 0;
+      let subtotal = 0;
+
+      if (keranjang.length === 0) {
+        container.innerHTML = `<p style="color:#6d434e; text-align:center; padding:20px 0;">Keranjang masih kosong. Silakan pilih kue terlebih dahulu.</p>`;
+      } else {
+        container.innerHTML = "";
+        keranjang.forEach((item, idx) => {
+          totalItem += item.qty;
+          subtotal += item.harga * item.qty;
+          container.innerHTML += `
+            <div class="cart-item">
+              <div class="cart-item-info">
+                <h4>${item.nama}</h4>
+                <span>${formatRupiah(item.harga)}</span>
+              </div>
+              <div class="qty-controls">
+                <button class="qty-btn" onclick="ubahQty(${idx}, -1)">-</button>
+                <strong>${item.qty}</strong>
+                <button class="qty-btn" onclick="ubahQty(${idx}, 1)">+</button>
+              </div>
+            </div>
+          `;
+        });
+      }
+
+      let diskon = 0;
+      if (subtotal > 0) {
+        if (kodePromoAktif === "DIANA10") diskon = Math.round(subtotal * 0.10);
+        if (kodePromoAktif === "ULTAH20") diskon = Math.min(20000, subtotal);
+      }
+
+      const ongkir = parseInt(document.getElementById("opsiKirim").value) || 0;
+      const totalBayar = Math.max(0, subtotal - diskon + ongkir);
+
+      badge.innerText = totalItem;
+      document.getElementById("subtotalText").innerText = formatRupiah(subtotal);
+      document.getElementById("diskonText").innerText = "- " + formatRupiah(diskon);
+      document.getElementById("ongkirText").innerText = formatRupiah(ongkir);
+      document.getElementById("totalBayarText").innerText = formatRupiah(totalBayar);
+    }
+
+    function bukaKeranjang() {
+      document.getElementById("cartOverlay").style.display = "block";
+      document.getElementById("cartDrawer").classList.add("open");
+    }
+
+    function tutupKeranjang() {
+      document.getElementById("cartOverlay").style.display = "none";
+      document.getElementById("cartDrawer").classList.remove("open");
+    }
+
+    // 5. Info Pembayaran DANA & Semua Bank
+    function tampilkanInfoBayar() {
+      const metode = document.getElementById("pilihMetode").value;
+      const judul = document.getElementById("judulMetode");
+      const nomor = document.getElementById("nomorTujuan");
+      const catatan = document.getElementById("catatanMetode");
+
+      if (metode === "DANA") {
+        judul.innerText = "Pembayaran DANA (Aktif & Terverifikasi)";
+        nomor.innerText = "081247608275";
+        catatan.innerText = "Transfer ke DANA 081247608275 a.n. Diana Kalua (bisa dari DANA maupun semua m-Banking).";
+      } else if (metode === "BCA") {
+        judul.innerText = "Virtual Account Bank BCA";
+        nomor.innerText = "3901081247608275";
+        catatan.innerText = "Kode BCA Top-Up DANA (3901) + 081247608275.";
+      } else if (metode === "BRI") {
+        judul.innerText = "BRIVA / Transfer Bank BRI";
+        nomor.innerText = "88810081247608275";
+        catatan.innerText = "Kode BRIVA DANA (88810) + 081247608275.";
+      } else if (metode === "MANDIRI") {
+        judul.innerText = "Mandiri Virtual Account";
+        nomor.innerText = "89508081247608275";
+        catatan.innerText = "Kode Mandiri VA DANA (89508) + 081247608275.";
+      } else if (metode === "BNI") {
+        judul.innerText = "BNI Virtual Account";
+        nomor.innerText = "8810081247608275";
+        catatan.innerText = "Kode BNI VA DANA (8810) + 081247608275.";
+      } else if (metode === "BSI") {
+        judul.innerText = "Bank Syariah Indonesia (BSI)";
+        nomor.innerText = "90081247608275";
+        catatan.innerText = "Kode BSI Top-Up DANA (900) + 081247608275.";
+      } else {
+        judul.innerText = "Transfer Semua Bank (Permata / CIMB / BI-FAST)";
+        nomor.innerText = "8528081247608275";
+        catatan.innerText = "Pilih tujuan Bank Permata / CIMB lalu masukkan 8528 + 081247608275.";
+      }
+    }
+
+    function salinNomor() {
+      const teksNomor = document.getElementById("nomorTujuan").innerText;
+      navigator.clipboard.writeText(teksNomor);
+      alert("Nomor pembayaran berhasil disalin: " + teksNomor);
+    }
+
+    // 6. Checkout ke WhatsApp
+    function prosesCheckoutWA() {
+      if (keranjang.length === 0) {
+        alert("Keranjang masih kosong! Pilih minimal 1 kue terlebih dahulu.");
+        return;
+      }
+
+      const nama = document.getElementById("inputNama").value.trim();
+      const ucapan = document.getElementById("inputUcapan").value.trim() || "-";
+      const waktu = document.getElementById("inputWaktu").value;
+      const opsiKirim = document.getElementById("opsiKirim").options[document.getElementById("opsiKirim").selectedIndex].text;
+      const metode = document.getElementById("pilihMetode").options[document.getElementById("pilihMetode").selectedIndex].text;
+      const nomorTujuan = document.getElementById("nomorTujuan").innerText;
+      const totalBayar = document.getElementById("totalBayarText").innerText;
+
+      if (!nama || !waktu) {
+        alert("Harap isi Nama Pemesan dan Tanggal & Jam Acara terlebih dahulu.");
+        return;
+      }
+
+      let daftarPesanan = "";
+      keranjang.forEach((item, i) => {
+        daftarPesanan += `${i + 1}. ${item.nama} (${item.qty}x) = ${formatRupiah(item.harga * item.qty)}%0A`;
+      });
+
+      const pesanWA = `Halo Dapur Kue Diana Kalua, saya ingin memesan kue ulang tahun:%0A%0A` +
+        `*Nama Pemesan:* ${nama}%0A` +
+        `*Pesanan Kue:*%0A${daftarPesanan}%0A` +
+        `*Tulisan Ucapan:* ${ucapan}%0A` +
+        `*Kode Promo:* ${kodePromoAktif || "-"}%0A` +
+        `*Waktu Acara:* ${waktu.replace("T", " Jam ")}%0A` +
+        `*Pengiriman:* ${opsiKirim}%0A` +
+        `*Total Bayar:* ${totalBayar}%0A` +
+        `*Metode Bayar:* ${metode} (${nomorTujuan})%0A%0A` +
+        `Saya akan segera mengirimkan bukti pembayarannya.`;
+
+      window.open(`https://wa.me/6281247608275?text=${pesanWA}`, "_blank");
+    }
+  </script>
+
+</body>
+</html>
